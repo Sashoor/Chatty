@@ -62,3 +62,34 @@
         overflow: scroll;
         padding: 30px;
  }
+
+ .chat__footer{
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     height: 62px;
+     border-top: 1px solid lightgray;
+ }
+ .chat__footer > form  {
+ display: flex;
+ flex:1;
+ }
+
+ .chat__footer > form > input {
+    flex:1;
+    border:none;
+    outline: none;
+    width: fit-content;
+    border-radius: 30px;
+    padding: 10px;
+    
+}
+
+.chat__footer > form > button {
+    display: none;
+}
+
+.chat__footer > .MuiSvgIcon-root{
+    padding: 10px;
+    color: gray;
+}

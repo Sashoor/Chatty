@@ -4,8 +4,14 @@ import SearchIcon from '@mui/icons-material/Search';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useState, useEffect } from "react";
+import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
+import MicIcon from '@mui/icons-material/Mic';
+
+
 function Chat() {
     const [seed, setSeed] = useState('');
+    const [input, setInput] = useState('');
+
 
     useEffect(() => {
         setSeed(Math.floor(Math.random() * 5000))
@@ -13,10 +19,15 @@ function Chat() {
     }, [])
 
 
-    return ( 
-        <div className="chat">
-            <h1>This is the chat page</h1>
+    const sendMessage = (e) => {
+        e.preventDefault();
+        console.log("message entered")
 
+        setInput("");
+    }
+
+    return (
+        <div className="chat">
             <div className="chat__header">
                 <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`} />
 
@@ -35,18 +46,21 @@ function Chat() {
             </div>
 
             <div className="chat__body">
-            <p className="chat__message chat__reciever">
-            <span className="chat__name">Saeed Ash</span>
+                <p className={`chat__message ${true && "chat__reciever"}`}>
+                    <span className="chat__name">Saeed Ash</span>
                 Hey Guys!
             <span className="chat__timestamp">
-                3:30pm
+                        3:30pm
             </span>
-            </p>
-            
+                </p>
+
             </div>
 
             <div className="chat__footer">
-
+                <InsertEmoticonIcon />
+                <form><input value={input} onChange={e => setInput(e.target.value)} placeholder="Type a Message" type="text" />
+                    <button onClick={sendMessage} type="submit">Send a Message</button></form>
+                <MicIcon />
             </div>
 
         </div>
